@@ -4,11 +4,12 @@
 class Circle
 {
 public:
-      void Circle(double R);//¹¹Ôìº¯Êı
-      void Area();//ÇóÃæ»ıº¯Êı
+      Circle()
+      Circle(double R);//æ„é€ å‡½æ•°
+      double Area();//æ±‚é¢ç§¯å‡½æ•°
 private:
-      double R;//
+      double R;
       double S;
-}£»
+}ï¼›
 
-#endif//·ÀÖ¹ÖØ¸´±àÒë
+#endif//é˜²æ­¢é‡å¤ç¼–è¯‘
