@@ -4,8 +4,8 @@
 class Circle
 {
 public:
-      Circle()
-      Circle(double R);//构造函数
+      Circle()//定义圆的类函数
+      void Circle(double R);//构造函数
       double Area();//求面积函数
 private:
       double R;
