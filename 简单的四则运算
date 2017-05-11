@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int c,a,b,r,ri;
+void main() {
+    srand( (unsigned)time( NULL ) );
+    system("cls");
+    printf("小学生算术四则运算测试系统\n");
+    while (1) {
+        printf("1加法 2减法 3乘法 4除法 0退出:");fflush(stdout);
+        rewind(stdin);
+        scanf("%d",&c);
+        if (0==c) break;
+        switch (c) {
+        case 1:
+            a=rand()%100;
+            b=rand()%100;
+            r=a+b;
+            while (1) {
+                printf("%d+%d=?",a,b);fflush(stdout);
+                rewind(stdin);
+                scanf("%d",&ri);
+                if (ri==r) {
+                    printf("答题正确，很好！\n");
+                    break;
+                } else {
+                    printf("答题错误，请重做。\n");
+                }
+            }
+        break;
+        case 2:
+            a=1+rand()%99;
+            b=rand()%a;
+            r=a-b;
+            while (1) {
+                printf("%d-%d=?",a,b);fflush(stdout);
+                rewind(stdin);
+                scanf("%d",&ri);
+                if (ri==r) {
+                    printf("答题正确，很好！\n");
+                    break;
+                } else {
+                    printf("答题错误，请重做。\n");
+                }
+            }
+        break;
+        case 3:
+            a=rand()%99;
+            b=rand()%99;
+            r=a*b;
+            while (1) {
+                printf("%d*%d=?",a,b);fflush(stdout);
+                rewind(stdin);
+                scanf("%d",&ri);
+                if (ri==r) {
+                    printf("答题正确，很好！\n");
+                    break;
+                } else {
+                    printf("答题错误，请重做。\n");
+                }
+            }
+        break;
+        case 4:
+            a=2+rand()%998;
+            b=1+rand()%(a/2);
+            while (1) {
+                if (0==a%b) break;
+                b--;
+            }
+            r=a/b;
+            while (1) {
+                printf("%d/%d=?",a,b);fflush(stdout);
+                rewind(stdin);
+                scanf("%d",&ri);
+                if (ri==r) {
+                    printf("答题正确，很好！\n");
+                    break;
+                } else {
+                    printf("答题错误，请重做。\n");
+                }
+            }
+        break;
+        }
+    }
+}
