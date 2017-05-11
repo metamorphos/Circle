@@ -1,0 +1,139 @@
+#include <count.h>
+using namespace std;
+int main(int argc, char *argv[]) 
+{
+    int *pa, *pb, *pc, *pd;
+    int c,a,b,r,ri;
+    char num_to_str[2],temp[3];
+    srand( (unsigned)time( NULL ) );
+    system("cls");
+    cout<<"小学生算术四则运算测试系统\n"<<endl;
+    if (language) printf("请输入0~10的整数题数：\n");
+	  else cout << "Please enter 0~10 integer question.";
+	  writeFile("The number of questions is ", argv[2]);
+	  num = scan(argv[1],language);
+	  sprintf(num_to_str, " %d" , num); 
+	  writeFile(num_to_str, argv[2]);
+	 if (language)
+		printf("请输入一个整数答案（输入e结束并得出结果）\n") ;
+	else cout << "Please enter an integer answer(e to quit and get the result)." << endl;
+   writeFile(temp,argv[2]);
+    while (1) {        cout<<"1加法 2减法 3乘法 4除法 0退出:"<<endl;
+        fflush(stdout);
+        rewind(stdin);
+        cin>>c;
+        if (0==c) break;
+        switch (c)         {
+        case 1:
+            a=rand()%100;
+            b=rand()%100;
+            r=a+b;
+            while (1)             {
+               count<<"%d+%d=?"<<a<<b<<endl;
+               fflush(stdout);
+                rewind(stdin);
+                cin>>ri;               
+                if (ri==r) 
+                {
+                    writeFile( "答案正确!正确答案是：",argv[2])
+                    break;
+                } 
+                else 
+                {
+                    writeFile("It's wrong,the right answer is ",argv[2]);
+                }
+            }
+        break;
+        case 2:
+            a=1+rand()%99;
+            b=rand()%a;
+            r=a-b;
+            while (1) {
+                cout<<"%d-%d=?"<<a<<b<<endl;
+                fflush(stdout);
+                rewind(stdin);
+                cin>>ri;
+                if (ri==r)
+                {
+                  writeFile( "答案正确!正确答案是：",argv[2])
+                    break;
+                } 
+                else 
+                {
+                  writeFile("It's wrong,the right answer is ",argv[2]);
+                }
+            }
+        break;
+        case 3:
+            a=rand()%99;
+            b=rand()%99;
+            r=a*b;
+            while (1) {
+                cout<<"%d*%d=?"<<a<<b<<endl;
+                fflush(stdout);
+                rewind(stdin);
+                cin>>ri;
+                if (ri==r) 
+                {
+                   writeFile( "答案正确!正确答案是：",argv[2]);
+                    break;
+                }
+                else {
+                  writeFile("It's wrong,the right answer is ",argv[2]);
+                }
+            }
+        break;
+        case 4:
+            a=2+rand()%998;
+            b=1+rand()%(a/2);
+            while (1) {
+                if (0==a%b) break;
+                b--;
+            }
+            r=a/b;
+            while (1) {
+               cout<<"%d/%d=?"<<a<<b<<endl;
+               fflush(stdout);
+                rewind(stdin);
+               cin>>ri;
+                if (ri==r)
+                {
+                   writeFile( "答案正确!正确答案是：",argv[2]);
+                    break;
+                } else {
+                   writeFile("答案错误！答案为\n",argv[2]);
+                }
+            }
+        break;
+        }
+    }
+}
+void writeFile(char *str,char *filename)
+{
+	FILE *fp;
+	puts(str); 
+	if ((fp = fopen(filename, "a")) == NULL)
+	{
+		cout << "Can't open the file." << endl;
+		exit(0);
+	}
+	fputs(str, fp);
+	fputs("\n",fp);
+	if ((fclose(fp)) != 0)
+		fprintf(stderr, "Error in closing files\n");
+	return;
+}
+int readFile(char *filename)
+{
+	FILE *fp;
+	char ch[2];
+	if ((fp = fopen(filename, "r")) == NULL)
+	{
+		cout << "Can't open this file." << endl;
+		exit(0);
+	}
+	fgets(ch,2,fp);
+	if (fclose(fp) != 0)
+		cout << "Error in closing file %s.\n" << filename << endl;
+	return ch[0]-'0';
+}
